@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration monitorInterval="5">
+    <Properties>
+        <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss SSS} [%p] [c=%c{1}] [%L] [%thread] [%traceId] %m%n</Property>
+        <property name="MODULE_NAME">rookie-spring</property>
+        <property name="LOG_HOME">/data/logs/rookie-spring/</property>
+    </Properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>${pattern}</pattern>
+            </PatternLayout>
+        </Console>
+        <GRPCLogClientAppender name="grpc-log">
+            <PatternLayout>
+                <pattern>${pattern}</pattern>
+            </PatternLayout>
+        </GRPCLogClientAppender>
+        <RollingFile name="RF" fileName="${LOG_HOME}/${MODULE_NAME}/${MODULE_NAME}.log"
+                     filePattern="${LOG_HOME}/${MODULE_NAME}/${MODULE_NAME}-%d{yyyy-MM-dd_HH}-%i.log.gz">
+            <PatternLayout
+                    pattern="[${MODULE_NAME}] ${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true"
+                                           interval="1"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+                <CronTriggeringPolicy schedule="0 0 * * * ?"/> <!-- 这里是每小时监测一次 -->
+            </Policies>
+            <DefaultRolloverStrategy max="100">
+                <Delete basePath="${LOG_HOME}" maxDepth="3">
+                    <IfFileName glob="*/${MODULE_NAME}-*.log.gz"/>
+                    <IfLastModified age="30d"/> <!-- 这里保留30天 -->
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </appenders>
+
+    <Loggers>
+        <Logger name="org.springframework" level="WARN" additivity="false" includeLocation="false">
+            <AppenderRef ref="RF"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="RF"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="grpc-log"/>
+
+        </Root>
+    </Loggers>
+</configuration>
