@@ -1,7 +1,5 @@
 # 跟随项目的说明文档
 
-[![警报](https://sonar.bugboke.com/api/project_badges/measure?project=BASE20222806093142&metric=alert_status&token=squ_563768921ccdd7b4f6c6c51b9f7240756efcafe9)](https://sonar.bugboke.com/dashboard?id=BASE20222806093142)
-
 ## 目录说明
 
 - doc 文档目录
