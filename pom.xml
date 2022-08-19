@@ -158,10 +158,15 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.9</version>
+        </dependency>
         <!-- 开源项目 knife4j,集成 swagger3,接口文档工具 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <artifactId>knife4j-springdoc-ui</artifactId>
             <version>3.0.3</version>
         </dependency>
         <!-- JMH性能测试框架 -->
