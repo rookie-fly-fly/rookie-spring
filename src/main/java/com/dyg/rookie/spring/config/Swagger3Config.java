@@ -20,33 +20,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Swagger3Config {
 
-    //@Bean
-    //public Docket desertsApi() {
-    //    // OAS:OpenAPI Specification
-    //    return new Docket(DocumentationType.OAS_30).apiInfo(apiInfo()).select()
-    //            // RequestHandlerSelectors配置如何扫描接口
-    //            .apis(RequestHandlerSelectors.basePackage("com.dyg.rookie.spring"))
-    //            // PathSelectors配置哪些路径和请求方式需要生成API文档
-    //            .paths(PathSelectors.any()).build().groupName("rookie-spring 接口文档V1.0").enable(true);
-    //}
-    //
-    //private ApiInfo apiInfo() {
-    //    return new ApiInfoBuilder().title("rookie-spring API").description("rookie-spring 接口文档")
-    //            .contact(new Contact("rookie-spring", "", "believerA@aliyun.com")).version("1.0")
-    //            .build();
-    //}
-
     @Bean
     public GroupedOpenApi userApi() {
         String[] paths = {"/**"};
         String[] packagedToMatch = {"com.dyg.rookie.spring"};
         return GroupedOpenApi.builder().group("rookie-spring 接口文档V1.0")
                 .pathsToMatch(paths)
-                .addOperationCustomizer((operation, handlerMethod) -> {
-                    return operation.addParametersItem(new HeaderParameter().name("groupCode").example("测试")
-                            .description("集团code")
-                            .schema(new StringSchema()._default("BR").name("groupCode").description("集团code")));
-                })
+                .addOperationCustomizer((operation, handlerMethod) -> operation
+                        .addParametersItem(new HeaderParameter().name("SNBC").example("测试")
+                                .description("SNBC").
+                                schema(new StringSchema()._default("BR").name("groupCode").description("SNBC"))))
                 .packagesToScan(packagedToMatch).build();
     }
 
@@ -57,8 +40,8 @@ public class Swagger3Config {
                         .title("rookie-spring 接口文档")
                         .version("1.0")
                         .description("rookie-spring 接口文档内容")
-                        .termsOfService("http://doc.xiaominfo.com")
+                        .termsOfService("https://github.com/rookie-fly-fly/rookie-spring.git")
                         .license(new License().name("Apache 2.0")
-                                .url("http://doc.xiaominfo.com")));
+                                .url("https://github.com/rookie-fly-fly/rookie-spring.git")));
     }
 }
