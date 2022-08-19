@@ -29,10 +29,10 @@ import java.util.concurrent.ExecutorService;
  * @author rookie-spring
  * @date 2022/6/22 8:19
  */
-@Tag(name = "demo类", description = "项目示例类")
+@Tag(name = "项目示例类", description = "项目示例类-demo")
 @Slf4j
 @RestController
-@RequestMapping
+@RequestMapping("/demo")
 public class HelloController {
 
     @Autowired
@@ -49,7 +49,7 @@ public class HelloController {
      * @date 2022/7/2 14:35
      **/
     @Operation(summary = "测试Hello")
-    @GetMapping("/hello/{latency}")
+    @GetMapping("/hello")
     public String hello() {
         return "Welcome to reactive ~";
     }
@@ -118,7 +118,7 @@ public class HelloController {
      * @date 2022/6/27 9:38
      */
     @Operation(summary = "业务异常的例子")
-    @GetMapping("throw_business_exception_demo")
+    @GetMapping("/throw_business_exception_demo")
     public CallResponse<String> businessRuntimeExceptionDemo(String requestParam) {
         if (CharSequenceUtil.isEmpty(requestParam)) {
             // 抛出业务异常后,直接通过GlobalExceptionHandler处理
