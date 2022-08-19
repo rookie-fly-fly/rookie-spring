@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutorService;
  * @author rookie-spring
  * @date 2022/6/22 8:19
  */
-@Tag(name = "demo类", description = "项目示例类")
+@Tag(name = "项目示例类", description = "项目示例类-demo")
 @Slf4j
 @RestController
 @RequestMapping("/demo")
