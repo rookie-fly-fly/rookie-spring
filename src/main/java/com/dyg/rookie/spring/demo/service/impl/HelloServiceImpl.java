@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * HelloServiceImpl 接口是 Service接口的实现类 示例
@@ -67,5 +68,21 @@ public class HelloServiceImpl implements IHelloService {
     @Override
     public FeignResponseVO feignDemo(FeignQueryVO feignQueryVO) {
         return demoFeignService.feignApiConvert(feignQueryVO);
+    }
+
+    /**
+     * 测试@Transtonal 注解
+     *
+     * @param id : id值
+     * @param name : 修改的名称
+     * @return {@link String }
+     * @author dongyinggang
+     * @date 2023/6/30 13:24
+     **/
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public String transactionalDemo(int id, String name) {
+        helloMapper.insert(name);
+        return helloMapper.hello(id).getName();
     }
 }
