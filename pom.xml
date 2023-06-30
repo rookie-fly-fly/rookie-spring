@@ -158,17 +158,18 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.9</version>
-        </dependency>
         <!-- 开源项目 knife4j,集成 swagger3,接口文档工具 -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.xiaoymin</groupId>-->
+        <!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
+        <!--            <version>3.0.3</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-springdoc-ui</artifactId>
-            <version>3.0.3</version>
+            <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+            <version>4.1.0</version>
         </dependency>
+
         <!-- JMH性能测试框架 -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
@@ -193,6 +194,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <!-- 引入 Spring Cache 支持缓存处理 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!-- cache的实现方案通过集成 Caffeine -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
         </dependency>
     </dependencies>
 

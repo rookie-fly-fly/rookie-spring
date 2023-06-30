@@ -9,4 +9,8 @@
         from t_hello
         where id = #{id}
     </select>
+    <insert id="insert">
+        insert into t_hello(name)
+        values (#{name})
+    </insert>
 </mapper>

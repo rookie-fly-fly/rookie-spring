@@ -4,8 +4,10 @@ import com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -15,6 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author rookie-spring
  * @date 2022/7/1 15:38
  */
+@EnableAsync
+@EnableCaching
 @EnableFeignClients
 @EnableTransactionManagement
 @SpringBootApplication(exclude = PageHelperAutoConfiguration.class)

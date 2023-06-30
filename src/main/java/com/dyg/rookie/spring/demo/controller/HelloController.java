@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -180,6 +181,20 @@ public class HelloController {
     @GetMapping("/feign_demo")
     public CallResponse<FeignResponseVO> feignDemo(FeignQueryVO feignQueryVO) {
         return CallResponse.success(helloService.feignDemo(feignQueryVO));
+    }
+
+    /**
+     * 测试@Transtional注解
+     *
+     * @param id : id值
+     * @param name : 名称
+     * @return {@link CallResponse< String> }
+     * @author dongyinggang
+     * @date 2023/6/30 13:23
+     **/
+    @GetMapping("/transactional_demo")
+    public CallResponse<String> transactionalDemo(@RequestParam("id") int id, @RequestParam("name") String name) {
+        return CallResponse.success(helloService.transactionalDemo(id, name));
     }
 
 }

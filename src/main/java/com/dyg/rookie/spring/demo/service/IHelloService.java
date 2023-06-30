@@ -44,4 +44,15 @@ public interface IHelloService {
      * @date 2022/7/1 14:29
      */
     FeignResponseVO feignDemo(FeignQueryVO feignQueryVO);
+
+    /**
+     * 测试@Transtonal 注解
+     *
+     * @param id : id值
+     * @param name : 修改的名称
+     * @return {@link String }
+     * @author dongyinggang
+     * @date 2023/6/30 13:24
+     **/
+    String transactionalDemo(int id, String name);
 }

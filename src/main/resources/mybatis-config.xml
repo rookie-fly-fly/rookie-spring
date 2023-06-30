@@ -6,7 +6,7 @@
     </properties>
     <settings>
         <!-- mybatis自带日志 -->
-        <!--        <setting name="logImpl" value="STDOUT_LOGGING"></setting>-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING" />-->
         <!-- 开启驼峰匹配 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!-- 这个配置使全局的映射器启用或禁用缓存。系统默认值是true，设置只是为了展示出来 -->
@@ -28,12 +28,12 @@
 
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
-<!--                        <property name="dialect" value="mysql"/> -->
+            <!--                        <property name="dialect" value="mysql"/> -->
             <property name="offsetAsPageNum"
                       value="true"/>
             <property name="rowBoundsWithCount"
                       value="true"/>
-            <property name="pageSizeZero" value="true"/> 
+            <property name="pageSizeZero" value="true"/>
             <property name="reasonable"
                       value="true"/>
         </plugin>
